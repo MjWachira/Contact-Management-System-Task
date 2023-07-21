@@ -31,21 +31,28 @@ class ContactItems{
 }
 btnAdd.addEventListener('click',()=>{
     let fName=document.getElementById('fname').value
+    let sName=document.getElementById('sname').value
+    let email=document.getElementById('email').value
+    let pNum=document.getElementById('number').value
 
     console.log(fName)
     console.log('clicked')
     
-    if(fName){
-        var contactItems = new ContactItems(fName)
+    if(fName && sName && email && pNum){
+        const contactItems = new ContactItems(fName,sName,email,pNum)
         console.log(contactItems)
+        addToLocal()
+    }
+    else{
+        alert("an input cant be null")
     }
 
 })
 
-function addDetailsToLocal(contactItems){
-    let contactItems=JSON.parse(localStorage.getItem(contactItems))||[];
-    contactItems.push(contactItems)
-    localStorage.setItem('contactItems',JSON.stringify(contactItems))
+function addToLocal(contactItems){
+    let contactItem=JSON.parse(localStorage.getItem(contactItems))||[];
+    contactItems.push(contactItem)
+    localStorage.setItem('contactItem',JSON.stringify(contactItems))
 }
 
 
